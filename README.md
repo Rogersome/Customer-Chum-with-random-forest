@@ -1,137 +1,123 @@
-# Customer Churn Prediction Project
+Customer Churn Prediction Project
+Project Overview
+This project analyzes and predicts customer churn using machine learning techniques. By identifying key factors contributing to customer churn, businesses can develop targeted retention strategies to reduce attrition and improve customer loyalty. The implementation includes both comprehensive data analysis and predictive modeling components.
+Dataset
+The project uses the Customer Churn Dataset from Kaggle, which contains:
 
-## Project Overview
-This project aims to analyze and predict customer churn using machine learning techniques. By identifying the key factors that contribute to customer churn, businesses can develop targeted retention strategies to reduce customer attrition and improve customer loyalty.
+Training Dataset: 440,833 customer records
+Testing Dataset: 64,374 customer records
 
-## Dataset Description
-The project utilizes two main datasets:
-- **Training Dataset**: 440,833 customer records with 12 features
-- **Testing Dataset**: 64,374 customer records with the same features
+Features include:
 
-### Features include:
-- **CustomerID**: Unique identifier for each customer
-- **Age**: Customer's age
-- **Gender**: Customer's gender (Male/Female)
-- **Tenure**: How long the customer has been with the company (in months)
-- **Usage Frequency**: How often the customer uses the service
-- **Support Calls**: Number of times the customer has contacted support
-- **Payment Delay**: Average number of days the customer delays payment
-- **Subscription Type**: Type of subscription (Basic, Standard, Premium)
-- **Contract Length**: Length of the customer's contract (Monthly, Quarterly, Annual)
-- **Total Spend**: Amount spent by the customer
-- **Last Interaction**: Days since the customer's last interaction
-- **Churn**: Target variable (1 = churned, 0 = not churned)
+CustomerID: Unique identifier for each customer
+Age: Customer's age
+Gender: Customer's gender (Male/Female)
+Tenure: Duration of customer relationship (in months)
+Usage Frequency: Service usage frequency
+Support Calls: Number of support interactions
+Payment Delay: Average payment delay in days
+Subscription Type: Service tier (Basic, Standard, Premium)
+Contract Length: Contract duration (Monthly, Quarterly, Annual)
+Total Spend: Customer spending amount
+Last Interaction: Days since last customer interaction
+Churn: Target variable (1 = churned, 0 = not churned)
 
-## Project Structure
+Project Structure
 The project is organized into two main components:
+1. Data Analysis (DA)
+File: customer_churn_da.py
+This component focuses on exploratory data analysis, generating visualization outputs stored in the da_outputs folder:
 
-### 1. Data Analysis (DA)
-The data analysis component focuses on exploring and understanding the dataset to identify patterns and key factors related to customer churn.
+Feature-specific analyses (age, gender, tenure, etc.)
+Correlation studies
+Customer segmentation analysis
+Risk factor visualization
+Revenue impact assessment
+Comprehensive heat maps and distribution plots
 
-**File**: `customer_churn_da.py`
+2. Predictive Modeling
+File: random_forest_model.py
+This component builds and evaluates a Random Forest classifier:
 
-**Key functionalities**:
-- Basic data exploration and statistics
-- Analysis of numerical and categorical features
-- Correlation analysis with churn
-- Customer segmentation analysis
-- Risk factor analysis
-- Customer value analysis
-- Generation of key insights and recommendations
+Data preprocessing and feature engineering
+Model training and evaluation
+Feature importance analysis
+Output files stored in model_outputs folder
 
-### 2. Predictive Modeling
-The predictive modeling component builds a Random Forest classifier to predict customer churn based on the identified factors.
+Results Summary
+Model Performance
 
-**File**: `random_forest_model.py`
+Accuracy: 58%
+Precision (Churn): 98%
+Recall (Churn): 27%
+F1 Score (Churn): 0.42
+AUC: 0.77
 
-**Key functionalities**:
-- Data preprocessing and feature engineering
-- Random Forest model training
-- Model evaluation
-- Feature importance analysis
-- Optional hyperparameter tuning
-- Model saving for future use
+Key Findings
 
-## Results Summary
+Payment behavior is the strongest predictor of churn, with Payment Delay being the most important feature
+Support calls strongly correlate with churn risk
+Usage frequency shows inverse relationship with churn probability
+Contract type significantly impacts churn rates (monthly contracts show higher churn)
+Tenure affects churn probability (newer customers are more likely to churn)
 
-### Model Performance
-- **Accuracy**: 58%
-- **Precision (Churn)**: 98%
-- **Recall (Churn)**: 27%
-- **F1 Score (Churn)**: 0.42
-- **AUC**: 0.77
+Installation & Usage
+Prerequisites
 
-### Key Findings
-1. **Payment behavior** is the most significant predictor of churn, with Payment Delay being the top feature
-2. **Customer support interactions** strongly correlate with churn (higher support calls indicate higher churn risk)
-3. **Usage frequency** is inversely related to churn risk
-4. **Contract type** impacts churn rates significantly, with monthly contracts showing higher churn than annual contracts
-5. **Customer tenure** is an important factor, with newer customers more likely to churn
+Python 3.8+
+Required libraries: pandas, numpy, matplotlib, seaborn, scikit-learn, scipy
 
-## Getting Started
-
-### Prerequisites
-- Python 3.8+
-- Required libraries:
-  - pandas
-  - numpy
-  - matplotlib
-  - seaborn
-  - scikit-learn
-  - scipy
-
-### Usage
-
-#### Data Analysis
-```bash
+Setup
+bash# Clone or download this repository
+# Install required packages
+pip install pandas numpy matplotlib seaborn scikit-learn scipy
+Running the Analysis
+bash# Run data analysis component
 python customer_churn_da.py
-```
-This will generate visualizations and insights in the `da_outputs` directory.
 
-#### Random Forest Model
-```bash
+# Run Random Forest model
 python random_forest_model.py
-```
-This will train the model, evaluate its performance, and save the model in the `model_outputs` directory.
-
-## Model Interpretation
-The Random Forest model shows:
-- High precision but low recall for churn prediction
-- Strong ability to identify key churn factors
-- Reasonable discriminative ability (AUC = 0.77)
-- Class imbalance issues that could be addressed with resampling techniques
-
-## Business Recommendations
+Business Recommendations
 Based on the analysis, we recommend:
 
-1. **Improve payment experience**:
-   - Implement proactive payment reminders
-   - Offer flexible payment options for customers with payment delays
-   - Create early warning systems for increasing payment delays
+Improve payment experience:
 
-2. **Enhance customer support**:
-   - Review support processes for customers with multiple calls
-   - Implement satisfaction surveys after support interactions
-   - Consider dedicated account managers for high-value customers with support issues
+Implement proactive payment reminders
+Offer flexible payment options
+Create early warning systems for payment delays
 
-3. **Adjust contract strategies**:
-   - Review monthly contract offerings and incentives
-   - Create targeted offers to move monthly customers to longer contracts
-   - Implement special retention programs for first-year customers
 
-4. **Implement value-based retention**:
-   - Prioritize retention efforts for high-value segments
-   - Develop targeted upgrade paths for medium-value customers
-   - Consider special loyalty programs for premium customers
+Enhance customer support:
 
-5. **Develop early intervention programs**:
-   - Implement risk scoring based on identified factors
-   - Create proactive outreach for customers with increasing risk scores
-   - Develop targeted offers based on specific risk factors
+Review support processes for customers with multiple calls
+Implement post-interaction satisfaction surveys
+Consider dedicated support for high-value customers
 
-## Future Improvements
-- Explore additional models (XGBoost, LightGBM) for potentially better performance
-- Address class imbalance with techniques like SMOTE
-- Optimize prediction thresholds for better business outcomes
-- Create segment-specific models for more targeted predictions
-- Incorporate additional data sources if available
+
+Optimize contract strategies:
+
+Review monthly contract offerings
+Create incentives for longer-term commitments
+Implement special retention programs for first-year customers
+
+
+Develop targeted interventions:
+
+Implement risk scoring based on identified factors
+Create proactive outreach for high-risk customers
+Design segment-specific retention offers
+
+
+
+Future Improvements
+
+Address class imbalance with techniques like SMOTE
+Optimize decision threshold for better business outcomes
+Explore ensemble methods and alternative algorithms
+Create segment-specific prediction models
+Incorporate additional customer behavioral data
+
+Acknowledgments
+
+Customer Churn Dataset from Kaggle by Muhammad Shahid Azeem
+RetryClaude does not have internet access. Links provided may not be accurate or up to date.Claude can make mistakes. Please double-check responses.
