@@ -83,7 +83,7 @@ The predictive modeling component builds a Random Forest classifier to predict c
 ### Installation
 ```bash
 # Clone this repository
-git clone https://github.com/yourusername/customer-churn-prediction.git
+git clone https://github.com/Rogersome/Customer-Chum-with-random-forest.git
 
 # Navigate to the project directory
 cd customer-churn-prediction
@@ -149,7 +149,6 @@ Based on the analysis, we recommend:
 - Incorporate additional data sources if available
 
 ## License
-[Insert appropriate license information here]
 
 ## Acknowledgments
 - Customer Churn Dataset from Kaggle by Muhammad Shahid Azeem
